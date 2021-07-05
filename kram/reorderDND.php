@@ -11,9 +11,10 @@ if(!isset($_POST['action']) OR !isset($_POST['recordsArray']) OR !isset($_POST['
 	// check if user has permissions to access the Members module
 	require_once(WB_PATH.'/framework/class.admin.php');
 	$admin = new admin('Modules', 'module_view', false, false);
-	if (!($admin->is_authenticated() && $admin->get_permission('members', 'module'))) 
-		die(header('Location: ../../index.php'));
-	
+	if (!($admin->is_authenticated() && $admin->get_permission('members', 'module'))) {
+		header('Location: ../../index.php');
+		die();
+	}
 // DO I NEED THEESE TWO LINES BELOW ?????
 	//global $database;
 	//global $wb;
@@ -35,7 +36,7 @@ if(!isset($_POST['action']) OR !isset($_POST['recordsArray']) OR !isset($_POST['
 	 
 		$listingCounter = 1;
 		$output = "";
-		foreach ($updateRecordsArray as $recordIDValue) {
+		foreach ($updateRecordsArray as (int) $recordIDValue) {
 			if ($recordIDValue > 1000000) {
 				$the_group = $recordIDValue - 1000000;
 				$listingCounter = 1;

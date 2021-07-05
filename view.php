@@ -37,23 +37,6 @@ if(LANGUAGE_LOADED) {
     }
 }
 
-// Load CSS file
-// check if frontend.css file needs to be included into the <body></body> of view.php
-if((!function_exists('register_frontend_modfiles') || !defined('MOD_FRONTEND_CSS_REGISTERED')) &&  file_exists(WB_PATH .'/modules/'.$mod_dir.'/frontend.css')) {
-   echo '<style type="text/css">';
-   include(WB_PATH .'/modules/'.$mod_dir.'/frontend.css');
-   echo "\n</style>\n";
-   
-   echo '<script type="text/javascript">
-		<!--
-		function showmembermail(n,d,t) {
-		var mail = n+\'@\'+d;
-		if (t==\'\') {t = mail;}
-		document.write(\'<a href=\"mailto:\'+ mail + \'\">\'+ t + \'</\'+\'a>\');
-		} // -->
-		</script>';
-} 
-
 
 // Get information on what groups and members are sorted by
 $query_settings = $database->query("SELECT * FROM ".TABLE_PREFIX."mod_members_settings WHERE section_id = '$section_id'");

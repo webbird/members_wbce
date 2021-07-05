@@ -60,16 +60,19 @@ if (defined('WB_URL')) {
 	if (!file_exists($mpath.'frontend.js')) { copy($mpath.'kram/frontend.default.js', $mpath.'frontend.js') ; }
 	
 	//Delete some older files:
+	if (file_exists($mpath.'module_settings.default.php')) { unlink($mpath.'module_settings.default.php'); }
 	if (file_exists($mpath.'frontend.default.css')) { unlink($mpath.'frontend.default.css'); }
 	if (file_exists($mpath.'frontend.default.js')) { unlink($mpath.'frontend.default.js'); }
+		
 	if (file_exists($mpath.'functions.inc.php')) { unlink($mpath.'functions.inc.php'); }
 	if (file_exists($mpath.'add_settings.default.php')) { unlink($mpath.'add_settings.default.php'); }
-	if (file_exists($mpath.'frontend.default.css')) { unlink($mpath.'frontend.default.css'); }
 	if (file_exists($mpath.'getmemberpagelink.php')) { unlink($mpath.'getmemberpagelink.php'); }
 	if (file_exists($mpath.'getsettings.php')) { unlink($mpath.'getsettings.php'); }
 	if (file_exists($mpath.'memberlist.inc.php')) { unlink($mpath.'memberlist.inc.php'); }
-	if (file_exists($mpath.'module_settings.default.php')) { unlink($mpath.'module_settings.default.php'); }
+	
 	if (file_exists($mpath.'tidy_up.inc.php')) { unlink($mpath.'tidy_up.inc.php'); }
+	
+	if (file_exists($mpath.'edit_css.php')) { unlink($mpath.'edit_css.php'); } //2021 removed
 }
 
 ?>

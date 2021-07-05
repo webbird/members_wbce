@@ -171,8 +171,6 @@ $countgroups = 0;
 	echo '<a href="'.WB_URL .'/modules/'.$mod_dir.'/add_group.php?'. $mod_param.'" style="padding-top:20px;"><strong>'.$TEXT['ADD'].' '.$METEXT['GROUP'].'</strong></a>';	
 }
 
-//echo '<div class="admininfo ">sort_by: '.$sort_by.'</div>';
-css_edit(); echo '<hr/>';
 ?>
 </div> 
 

@@ -22,7 +22,6 @@
 	//the order of the fields on modify-member page: 
 	$memberfieldorder = 'short1,long1,short2,long2,memberpage_id,link';
 	
-	$use_frontend_cssjs = 0; //0: no (default with WB 2.7 up), 1: link, 2: embed
 	
 	$noadmin_nooptions = 0; //0: no, 1: only the admin may change settings
 	$paramdelimiter = '&'; //use '&amp;' in special cases
