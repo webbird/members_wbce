@@ -304,7 +304,7 @@ made. Check it out!</p>
   media@beesign.com Chio Maisriml</font> will be <a href="mailto:media@beesign.com">Chio
   Maisriml</a> (optional masked with  Javascript)<br />
   <font color="#000099">http://www.beesign.com Chio&#8217;s page</font> will
-be <a href="http://www.beesign.com" target="_blank">Chio&#8217;s page</a></p>
+be <a href="http://www.beesign.com" target="_blank" rel="noopener">Chio&#8217;s page</a></p>
 <p>  The optional field memberpage_id can contain a page_id
   of a internal page (Number!)</p>
 <p><strong>Options [3]</strong><br />
@@ -342,5 +342,5 @@ in the backend (there is no need to change anything)<br />
   href=&quot;mailto:gerti@maier.com&gt;Miss
 Gerti Meier&lt;/a&gt;.</p>
 <p>&nbsp;</p>
-<p><a href="http://websitebaker.at/wb/members.html" target="_blank">Additional
+<p><a href="http://websitebaker.at/wb/members.html" target="_blank" rel="noopener">Additional
     information</a> (german)</p>

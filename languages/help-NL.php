@@ -145,7 +145,7 @@ n&ouml;tig, das meiste davon kann sp&auml;ter auch in den Optionen ver&auml;nder
   <font color="#000099">media@beesign.com Chio Maisriml</font> wird zu <a href="mailto:media@beesign.com">Chio
   Maisriml</a> (optional mit Javascript
   maskiert)<br>
-  <font color="#000099">http://www.beesign.com Chio&#8217;s Seite</font> wird zu <a href="http://www.beesign.com" target="_blank">Chio&#8217;s
+  <font color="#000099">http://www.beesign.com Chio&#8217;s Seite</font> wird zu <a href="http://www.beesign.com" target="_blank" rel="noopener">Chio&#8217;s
   Seite</a><br>
   Das optionale Feld memberpage_id kann eine Zahl enthalten, und zwar die page_id
   einer internen Seite.<br>
@@ -273,7 +273,7 @@ hat.</p>
     <tr>
     <td>[ROWCOUNT]</td>
     <td>1 (Laufende Nummer pro Gruppe)</td>
-  </tr>
+ÿ </?? 
     <tr>
       <td>&nbsp;</td>
       <td><p>&nbsp;</p>
@@ -312,4 +312,4 @@ Seite&lt;/a&gt;&lt;/div&gt; <br>
   Die Variablen und Einstellungen sind dort beschrieben.<br>
   Die meisten der Variablen haben selbsterkl&auml;rende Namen.
 </p>
-<p><a href="http://www.beesign.com/websitebaker/pages/posts/modul-members31.php" target="_blank">Weiteres dazu hier</a></p>
+<p><a href="http://www.beesign.com/websitebaker/pages/posts/modul-members31.php" target="_blank" rel="noopener">Weiteres dazu hier</a></p>
