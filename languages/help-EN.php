@@ -300,10 +300,9 @@ made. Check it out!</p>
 <p>There are  each 2 long and short fields for free usage. Additional there
   is a field &quot;link&quot; which can contain a link OR an email-address.After
   this there can be additional text, which is used as linktext:<br />
-  Example:<font color="#000099"><br />
-  media@beesign.com Chio Maisriml</font> will be <a href="mailto:media@beesign.com">Chio
+  Example:<span style="color:#000099">media@beesign.com Chio Maisriml</span> will be <a href="mailto:media@beesign.com">Chio
   Maisriml</a> (optional masked with  Javascript)<br />
-  <font color="#000099">http://www.beesign.com Chio&#8217;s page</font> will
+  <span style="color:#000099">http://www.beesign.com Chio&#8217;s page</span> will
 be <a href="http://www.beesign.com" target="_blank" rel="noopener">Chio&#8217;s page</a></p>
 <p>  The optional field memberpage_id can contain a page_id
   of a internal page (Number!)</p>

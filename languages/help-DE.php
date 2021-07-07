@@ -350,10 +350,10 @@ n&ouml;tig, das meiste davon kann sp&auml;ter auch in den Optionen ver&auml;nder
   gibt es optional ein Feld "Link", das eine eMail-Adresse oder eine
   URL (beginnend mit http://") enthalten kann. Danach kann noch weiterer
   Text stehen, dieser wird als Linktext verwendet. Ein Beispiel:<br>
-  <font color="#000099">media@beesign.com Chio Maisriml</font> wird zu <a href="mailto:media@beesign.com">Chio
+  <span style="color:#000099">media@beesign.com Chio Maisriml</span> wird zu <a href="mailto:media@beesign.com">Chio
   Maisriml</a> (optional mit Javascript
   maskiert)<br>
-  <font color="#000099">http://www.beesign.com Chio&#8217;s Seite</font> wird zu <a href="http://www.beesign.com" target="_blank" rel="noopener">Chio&#8217;s
+  <span style="color:#000099">http://www.beesign.com Chio&#8217;s Seite</span> wird zu <a href="http://www.beesign.com" target="_blank" rel="noopener">Chio&#8217;s
   Seite</a><br>
   Das optionale Feld memberpage_id kann eine Zahl enthalten, und zwar die page_id
   einer internen Seite.<br>
