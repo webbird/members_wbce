@@ -82,7 +82,7 @@ if(isset($_GET['action']) && $_GET['action'] == 'save' &&
 	
 	// check which module file to edit (frontend.css, backend.css or '')
 	$css_file = '';
-	if(isset($_GET['edit_file'])) $css_file = edit_mod_file($_GET['edit_file']);
+	if(isset($_GET['edit_file'])) $css_file = edit_mod_file();
 
 	// display output
 	if($css_file == '') {
