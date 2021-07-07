@@ -71,8 +71,6 @@ if (defined('WB_URL')) {
 	if (file_exists($mpath.'memberlist.inc.php')) { unlink($mpath.'memberlist.inc.php'); }
 	
 	if (file_exists($mpath.'tidy_up.inc.php')) { unlink($mpath.'tidy_up.inc.php'); }
-	
-	if (file_exists($mpath.'edit_css.php')) { unlink($mpath.'edit_css.php'); } //2021 removed
 }
 
 ?>
