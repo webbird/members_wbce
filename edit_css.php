@@ -55,12 +55,16 @@ if(isset($_GET['action']) && $_GET['action'] == 'save' &&
 
 	$bytes = 0;
 	if ($css_content != '') {
-		// open the module CSS file for writting
-		$mod_file = @fopen(dirname(__FILE__) .'/' .$_POST['edit_file'], "wb");
-		// write new content to the module CSS file
-		$bytes = @fwrite($mod_file, $css_content);
-		// close the file
-		@fclose($mod_file);
+		// validate file name
+        $cssfile = filter_input(INPUT_POST,'edit_file',FILTER_SANITIZE_SPECIAL_CHARS);
+        if(!is_null($cssfile) && pathinfo($cssfile,PATHINFO_EXTENSION) === 'css') {
+		    // open the module CSS file for writting
+    		$mod_file = @fopen(dirname(__FILE__) .'/'.pathinfo($cssfile,PATHINFO_BASENAME), "wb");
+		    // write new content to the module CSS file
+		    $bytes = @fwrite($mod_file, $css_content);
+		    // close the file
+		    @fclose($mod_file);
+        }
 	}
 
 	// write out status message
@@ -102,7 +106,7 @@ if(isset($_GET['action']) && $_GET['action'] == 'save' &&
 		}
 			
 	?>
-		<form name="edit_module_file" action="<?php echo $_SERVER['PHP_SELF'] .'?action=save';?>" method="post" style="margin: 0;">
+		<form name="edit_module_file" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) .'?action=save';?>" method="post" style="margin: 0;">
 	  		<input type="hidden" name="section_id" value="<?php echo $section_id; ?>">
 	  		<input type="hidden" name="page_id" value="<?php echo $page_id; ?>">
 			<input type="hidden" name="css_codepress" value="" />
