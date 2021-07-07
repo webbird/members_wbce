@@ -7,7 +7,7 @@ function changepic(byinput) {
 	}
 	
 	
-	o = 6 + bildname.indexOf(".gif") +  bildname.indexOf(".jpg")  +  bildname.indexOf(".png")+ bildname.indexOf(".GIF") +  bildname.indexOf(".JPG")  +  bildname.indexOf(".PNG");
+	var o = 6 + bildname.indexOf(".gif") +  bildname.indexOf(".jpg")  +  bildname.indexOf(".png")+ bildname.indexOf(".GIF") +  bildname.indexOf(".JPG")  +  bildname.indexOf(".PNG");
 	
 	if (o > 0) {
 		if(bildname.substr(0,7) != "http://") {bildname = memberpicloc + bildname;}
@@ -49,7 +49,7 @@ function changesettings(sid) {
 }
 
 function changepresets(thefile) {
-	
+	// var thelanguage is defined as global var in modify_settings.php
 	if (!thelanguage) {thelanguage = "en";}
 	
 	if( !document.createElement ) {
@@ -112,8 +112,7 @@ function xmlhttpPostLink(strURL) {
 function getmemberpagelink() {
     var form     = document.forms['modify'];
     var m_memberpage_id = form.m_memberpage_id.value;	
-    qstr = 'memp=' + escape(m_memberpage_id);  // NOTE: no '?' before querystring
-    return qstr;
+    return 'memp=' + escape(m_memberpage_id);  // NOTE: no '?' before querystring
 }
 
 function updatememberpage(str){
@@ -145,7 +144,7 @@ function getpicturepreviews() {
         self.xmlHttpReq = new ActiveXObject("Microsoft.XMLHTTP");
     }
 	
-	strURL = "modify_member.pictures.php";
+	var strURL = "modify_member.pictures.php";
     self.xmlHttpReq.open('POST', strURL, true);
     self.xmlHttpReq.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     self.xmlHttpReq.onreadystatechange = function() {
