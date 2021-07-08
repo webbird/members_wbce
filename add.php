@@ -22,13 +22,13 @@
 */
 
 // Must include code to stop this file being access directly
-if(defined('WB_PATH') == false) { exit("Cannot access this file directly"); }
+if(!defined('WB_PATH')) { exit("Cannot access this file directly"); }
 
-	$mod_dir = basename(dirname(__FILE__));
-	$mpath = WB_PATH.'/modules/'.$mod_dir.'/';
-	if (!file_exists($mpath.'module_settings.php')) { copy($mpath.'kram/module_settings.default.php', $mpath.'module_settings.php') ; }
-	if (!file_exists($mpath.'frontend.css')) { copy($mpath.'kram/frontend.default.css', $mpath.'frontend.css') ; }
-	if (!file_exists($mpath.'frontend.js')) { copy($mpath.'kram/frontend.default.js', $mpath.'frontend.js') ; }
+$mod_dir = basename(dirname(__FILE__));
+$mpath = WB_PATH.'/modules/'.$mod_dir.'/';
+if (!file_exists($mpath.'module_settings.php')) { copy($mpath.'kram/module_settings.default.php', $mpath.'module_settings.php') ; }
+if (!file_exists($mpath.'frontend.css')) { copy($mpath.'kram/frontend.default.css', $mpath.'frontend.css') ; }
+if (!file_exists($mpath.'frontend.js')) { copy($mpath.'kram/frontend.default.js', $mpath.'frontend.js') ; }
 	
 
 // These are the default setting
@@ -56,6 +56,6 @@ $t_long2 = addslashes($t_long2);
 
 
 
-$database->query("INSERT INTO ".TABLE_PREFIX."mod_members_settings (section_id, page_id, header, footer, grp_head, grp_foot, member_loop, hide_email, pic_loc, sort_mem_name, t_memberpage_id, t_link, t_short1, t_short2, t_long1, t_long2) VALUES ('$section_id', '$page_id', '$header', '$footer',  '$grp_head', '$grp_foot', '$member_loop', '$hide_email', '$pic_loc', '1', '$t_memberpage_id', '$t_link', '$t_short1', '$t_short2', '$t_long1', '$t_long2')");
+$database->query("INSERT INTO `".TABLE_PREFIX."mod_members_settings` (`section_id`, `page_id`, `header`, `footer`, `grp_head`, `grp_foot`, `member_loop`, `hide_email`, `pic_loc`, `sort_mem_name`, `t_memberpage_id`, `t_link`, `t_short1`, `t_short2`, `t_long1`, `t_long2`) VALUES ('$section_id', '$page_id', '$header', '$footer',  '$grp_head', '$grp_foot', '$member_loop', '$hide_email', '$pic_loc', '1', '$t_memberpage_id', '$t_link', '$t_short1', '$t_short2', '$t_long1', '$t_long2')");
 
 ?>
