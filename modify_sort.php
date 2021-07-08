@@ -229,8 +229,6 @@ if($countquery_groups > 0) {
 
 }
 
-// Now show EDIT CSS button
-//css_edit();
 echo '<hr/><br />';
 
 // write JS to Backend Body JS file - now we close file write connection

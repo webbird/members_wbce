@@ -172,7 +172,7 @@ $countgroups = 0;
 }
 
 //echo '<div class="admininfo ">sort_by: '.$sort_by.'</div>';
-css_edit(); echo '<hr/>';
+echo '<hr/>';
 ?>
 </div> 
 
