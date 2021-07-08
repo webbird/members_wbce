@@ -35,7 +35,7 @@
 					
 					if ($isalias == 0) {  //is NO alias, search for aliases od this member
 						echo '<span class="ismember">'.$members['m_name'].'</span>'; 
-						$query_alias = $database->query("SELECT * FROM `".TABLE_PREFIX."mod_members` WHERE m_isalias = '$member_id'");
+						$query_alias = $database->query("SELECT * FROM `".TABLE_PREFIX."mod_members` WHERE `m_isalias` = '$member_id'");
 						$has_alias = $query_alias->numRows();
 						if($has_alias > 0) {
 							$countaliasofmembers += $has_alias;

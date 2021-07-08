@@ -44,7 +44,7 @@ if(!isset($_POST['action']) OR !isset($_POST['recordsArray']) OR !isset($_POST['
 				continue;
 	 		}
 			//$database->query("UPDATE `".TABLE_PREFIX."mod_members` SET `position` = ".$listingCounter." WHERE `member_id` = ".$recordIDValue." AND `group_id` = ".$group_id." ");
-			$database->query("UPDATE `".TABLE_PREFIX."mod_members` SET position = ".$listingCounter.", group_id = ".$the_group." WHERE `member_id` = ".$recordIDValue);
+			$database->query("UPDATE `".TABLE_PREFIX."mod_members` SET `position` = ".$listingCounter.", `group_id` = ".$the_group." WHERE `member_id` = ".$recordIDValue);
 			$output .= "m".$recordIDValue. ' p'.$listingCounter. ' g'.$the_group."\n";
 
 
