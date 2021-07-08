@@ -60,15 +60,17 @@ if ($use_getfrom) {
 			
 	//Get other settings:
 	$query_others = $database->query("SELECT `page_id`, `section_id` FROM `".TABLE_PREFIX."mod_members_settings` WHERE `section_id` <> '$section_id'  ORDER BY `page_id` ASC");
-	if($query_others->numRows() > 0) { 	
+    if($query_others->numRows() > 0) { 	
 		while($others = $query_others->fetchRow()) {
 			$p_id = (int)$others['page_id'];
 			$s_id = (int)$others['section_id'];
-			$query_page = $database->query("SELECT `menu_title`, `link` FROM `".TABLE_PREFIX."pages` WHERE `page_id` = '$p_id'");
-			$fetch_menu = $query_page->fetchRow();
-			$menutitle = $fetch_menu['menu_title'];
-			$the_link = $fetch_menu['link'];
-			echo '<option value="page_id='.$p_id.$paramdelimiter.'section_id='.$s_id.'">'.$menutitle .' (sid'.$s_id.')</option>';		
+            if($p_id > 0) {
+    			$query_page = $database->query("SELECT `menu_title`, `link` FROM `".TABLE_PREFIX."pages` WHERE `page_id` = '$p_id'");
+    			$fetch_menu = $query_page->fetchRow();
+    			$menutitle = $fetch_menu['menu_title'];
+    			$the_link = $fetch_menu['link'];
+    			echo '<option value="page_id='.$p_id.$paramdelimiter.'section_id='.$s_id.'">'.$menutitle .' (sid'.$s_id.')</option>';
+            }
 		}
 	}
 	
