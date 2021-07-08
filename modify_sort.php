@@ -23,7 +23,7 @@
 
 require('../../config.php');
 // Must include code to stop this file being access directly
-if(defined('WB_PATH') == false) { exit("Cannot access this file directly");  }
+if(!defined('WB_PATH')) { exit("Cannot access this file directly");  }
 
 $mod_dir = basename(dirname(__FILE__));
 // Include WB admin wrapper script
@@ -50,11 +50,11 @@ if(LANGUAGE_LOADED) {
 //if (isset($_GET['hlmember'])) {$hlmember = 0 + (int)$_GET['hlmember'];} else {$hlmember = 0;}
 
 //Delete all links and groups with no m_name
-$database->query("DELETE FROM ".TABLE_PREFIX."mod_members  WHERE m_name=''");
-$database->query("DELETE FROM ".TABLE_PREFIX."mod_members_groups  WHERE group_id > '1' AND group_name=''");
+$database->query("DELETE FROM `".TABLE_PREFIX."mod_members`  WHERE `m_name`=''");
+$database->query("DELETE FROM `".TABLE_PREFIX."mod_members_groups`  WHERE `group_id` > '1' AND `group_name`=''");
 
 // Get information on what groups and members are sorted by
-$query_settings = $database->query("SELECT * FROM ".TABLE_PREFIX."mod_members_settings WHERE section_id = '$section_id'");
+$query_settings = $database->query("SELECT * FROM `".TABLE_PREFIX."mod_members_settings` WHERE `section_id` = '$section_id'");
 if($query_settings->numRows() <> 1) { die('No settings'); }
 
 $settings_fetch = $query_settings->fetchRow();
@@ -103,7 +103,7 @@ $countquery_ghosts = $query_ghosts->numRows();
 <?php 
 $the_group = 0;
 // Loop through existing groups
-$query_groups = $database->query("SELECT * FROM `".TABLE_PREFIX."mod_members_groups` WHERE section_id = '$section_id' ORDER BY ".$sort_grp_by." ASC");
+$query_groups = $database->query("SELECT * FROM `".TABLE_PREFIX."mod_members_groups` WHERE `section_id` = '$section_id' ORDER BY ".$sort_grp_by." ASC");
 $countquery_groups = $query_groups->numRows();
 if($countquery_groups > 0) {
 	$countgroups = 0;
@@ -199,7 +199,7 @@ if($countquery_groups > 0) {
 		
 		// Loop through existing members
 
-		$query_members = $database->query("SELECT * FROM `".TABLE_PREFIX."mod_members` WHERE group_id = '$group_id' ORDER BY ".$sort_by);
+		$query_members = $database->query("SELECT * FROM `".TABLE_PREFIX."mod_members` WHERE `group_id` = '$group_id' ORDER BY ".$sort_by);
 
 		$countquery_members = $query_members->numRows();
 		if($countquery_members > 0) {		

@@ -77,7 +77,7 @@ if (!($admin->is_authenticated() && $admin->get_permission('member', 'module')))
 	require_once(WB_PATH.'/modules/'.$mod_dir.'/module_settings.php');
 
 	// Get Settings
-	$query_settings = $database->query("SELECT pic_loc,extensions FROM ".TABLE_PREFIX."mod_members_settings WHERE section_id = '$section_id'");
+	$query_settings = $database->query("SELECT `pic_loc`,`extensions` FROM `".TABLE_PREFIX."mod_members_settings` WHERE `section_id` = '$section_id'");
 	$fetch_settings = $query_settings->fetchRow();
 	$picture_dir = MEDIA_DIRECTORY.$fetch_settings['pic_loc'];
 	echo '<table class="choosertable" border="0" cellpadding="0" cellspacing="0"><tr class="r1"> <td class="c1"><img src="img/shadow/shadow_nw.png" alt="" /></td><td class="c2"><a href="javascript:choosethispicture(0);"><img src="img/closebox.png" alt="close" /></a></td><td class="c3"><img src="img/shadow/shadow_ne.png" alt="" /></td></tr><tr class="r2"><td class="c1">&nbsp;</td>

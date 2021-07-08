@@ -79,7 +79,7 @@ if (!defined('WYSIWYG_EDITOR') OR WYSIWYG_EDITOR=="none" OR !file_exists(WB_PATH
 	require_once(WB_PATH.'/modules/'.WYSIWYG_EDITOR.'/include.php');
 }
 
-$query_content = $database->query("SELECT * FROM ".TABLE_PREFIX."mod_members WHERE member_id = '$member_id'");
+$query_content = $database->query("SELECT * FROM `".TABLE_PREFIX."mod_members` WHERE `member_id` = '$member_id'");
 $fetch_content = $query_content->fetchRow();
 
 $isalias = (int)$fetch_content['m_isalias'];
@@ -90,7 +90,7 @@ if(isset($_GET['from']) AND is_numeric($_GET['from'])) { $from = (int) $_GET['fr
 
 //the Group Selection box:
 $m_selection = '<select style="width:150px;" name="newgroup"><option value="1">'. $TEXT['NONE'].'</option>';
-$query = $database->query("SELECT * FROM ".TABLE_PREFIX."mod_members_groups WHERE page_id = $page_id ORDER BY position ASC");				
+$query = $database->query("SELECT * FROM `".TABLE_PREFIX."mod_members_groups` WHERE `page_id` = $page_id ORDER BY `position` ASC");
 if($query->numRows() > 0) {
 	$linestyle=' topline';	
 	// Loop through groups
@@ -107,7 +107,7 @@ if($query->numRows() > 0) {
 	}					
 }
 				
-$query = $database->query("SELECT * FROM ".TABLE_PREFIX."mod_members_groups WHERE page_id <> $page_id ORDER BY group_name ASC");				
+$query = $database->query("SELECT * FROM `".TABLE_PREFIX."mod_members_groups` WHERE `page_id` <> $page_id ORDER BY `group_name` ASC");
 if($query->numRows() > 0) {				
 	// Loop through groups
 	$linestyle=' topline';
@@ -121,7 +121,7 @@ if($query->numRows() > 0) {
 $m_selection .= '</select>';
 
 
-$query_settings = $database->query("SELECT * FROM ".TABLE_PREFIX."mod_members_settings WHERE section_id = '$section_id'");
+$query_settings = $database->query("SELECT * FROM `".TABLE_PREFIX."mod_members_settings` WHERE `section_id` = '$section_id'");
 if($query_settings->numRows() > 0) {
 	$settings_fetch = $query_settings->fetchRow();
 	$pic_loc = $settings_fetch['pic_loc'];
@@ -206,7 +206,7 @@ if(!isset($settings_fetch['various_values'])){
 	
 		if ($isalias  > 0) {
 		//is an alias:					
-			$query = $database->query("SELECT * FROM ".TABLE_PREFIX."mod_members WHERE member_id = '".$isalias."'");				
+			$query = $database->query("SELECT * FROM `".TABLE_PREFIX."mod_members` WHERE `member_id` = '".$isalias."'");
 			if($query->numRows() <> 1) { 
 				//Maybe delete alias here and then die??
 				die("Error: No such member");

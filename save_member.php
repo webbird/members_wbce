@@ -57,10 +57,10 @@ $from = (int)$admin->get_post_escaped('from');
 	
 $isalias = (int) $admin->get_post_escaped('isalias');
 if ($isalias == 0) {  //is NO alias, search for aliases od this member
-	$query_alias = $database->query("SELECT * FROM `".TABLE_PREFIX."mod_members` WHERE m_isalias = '$member_id'");
+	$query_alias = $database->query("SELECT * FROM `".TABLE_PREFIX."mod_members` WHERE `m_isalias` = '$member_id'");
 	if($query_alias->numRows() > 0) {
 		//Fix m_sortt, m_name:
-	 $database->query("UPDATE ".TABLE_PREFIX."mod_members SET m_name='".addslashes($m_name)."',  m_sortt='".$m_sortt."' WHERE m_isalias = '".$member_id."'");
+	 $database->query("UPDATE `".TABLE_PREFIX."mod_members` SET `m_name`='".addslashes($m_name)."',  `m_sortt`='".$m_sortt."' WHERE `m_isalias` = '".$member_id."'");
 	}
 }
 
@@ -74,7 +74,7 @@ if ($html_allowed > 2) {$longusage1 = 2; $longusage2 = 2;}
 
 //GetSettings
 
-$query_settings = $database->query("SELECT * FROM ".TABLE_PREFIX."mod_members_settings WHERE section_id = '$section_id'");
+$query_settings = $database->query("SELECT * FROM `".TABLE_PREFIX."mod_members_settings` WHERE `section_id` = '$section_id'");
 if($query_settings->numRows() != 1) { exit('Sh...t - no settings!'); }
 $settings_fetch = $query_settings->fetchRow();	
 if(!isset($settings_fetch['various_values'])){
@@ -135,7 +135,7 @@ if ($doduplicate == 1) {$m_name .= " DUPLICATE"; }
 
 
 //clear cache
-$database->query("UPDATE ".TABLE_PREFIX."mod_members_groups SET group_cache='',  group_search=''");
+$database->query("UPDATE `".TABLE_PREFIX."mod_members_groups` SET `group_cache`='',  `group_search`=''");
 		
 if ($newgroup <> $group_id AND $newgroup > 1) {
 		echo "moved from: ".$group_id. "  to: " .$newgroup;
@@ -159,32 +159,32 @@ if ($newgroup <> $group_id AND $newgroup > 1) {
 if ($newgroup == 1) { $group_id=1;}
 
 
-$querybase = 		(" group_id = '$group_id', "
-					. " m_name = '$m_name', "
-					. " m_isalias = '$isalias', "
-					. " active = '$active', "					
-					. " m_sortt = '$m_sortt', "
-					. " m_score = '$m_score', "
-					. " m_short1 = '$m_short1', "
-					. " m_short2 = '$m_short2', "
-					. " m_long1 = '$m_long1', "
-					. " m_long2 = '$m_long2', "
-					. " m_memberpage_id = '$m_memberpage_id', "
-					. " m_link = '$m_link', "
-					. " m_picture = '$m_picture'");
+$querybase = 		(" `group_id` = '$group_id', "
+					. " `m_name` = '$m_name', "
+					. " `m_isalias` = '$isalias', "
+					. " `active` = '$active', "
+					. " `m_sortt` = '$m_sortt', "
+					. " `m_score` = '$m_score', "
+					. " `m_short1` = '$m_short1', "
+					. " `m_short2` = '$m_short2', "
+					. " `m_long1` = '$m_long1', "
+					. " `m_long2` = '$m_long2', "
+					. " `m_memberpage_id` = '$m_memberpage_id', "
+					. " `m_link` = '$m_link', "
+					. " `m_picture` = '$m_picture'");
 
 if ($doduplicate == 1) {
 	//duplicate:
 	$order = new order(TABLE_PREFIX.'mod_members', 'position', 'member_id', 'group_id');
 	$position = $order->get_new($group_id);
-	$query = "INSERT INTO ".TABLE_PREFIX."mod_members SET " . $querybase. ", position='$position'";
+	$query = "INSERT INTO `".TABLE_PREFIX."mod_members` SET " . $querybase. ", `position`='$position'";
 	$database->query($query);
 	// Get the id
 	$member_id = $database->get_one("SELECT LAST_INSERT_ID()");
 
 } else {
 	// Update row
-	$query = "UPDATE ".TABLE_PREFIX."mod_members SET " . $querybase;
+	$query = "UPDATE `".TABLE_PREFIX."mod_members` SET " . $querybase;
 	if (isset($position)) {$query .= ", position = '$position' ";}					
 	$query .= " WHERE member_id = '$member_id'";
 	$database->query($query);

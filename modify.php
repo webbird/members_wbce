@@ -24,7 +24,7 @@
 // Must include code to stop this file being access directly
 //require('../../config.php');
 // Must include code to stop this file being access directly
-if(defined('WB_PATH') == false) { exit("Cannot access this file directly"); }
+if(!defined('WB_PATH')) { exit("Cannot access this file directly"); }
 
 $mod_dir = basename(dirname(__FILE__));
 
@@ -47,11 +47,11 @@ include('module_settings.php');
 if (isset($_GET['hlmember'])) {$hlmember = (int)$_GET['hlmember'];} else {$hlmember = 0;}
 
 //Delete all links and groups with no m_name
-$database->query("DELETE FROM ".TABLE_PREFIX."mod_members  WHERE m_name=''");
-$database->query("DELETE FROM ".TABLE_PREFIX."mod_members_groups  WHERE group_id > '1' AND group_name=''");
+$database->query("DELETE FROM `".TABLE_PREFIX."mod_members`  WHERE `m_name`=''");
+$database->query("DELETE FROM `".TABLE_PREFIX."mod_members_groups`  WHERE `group_id` > '1' AND `group_name`=''");
 
 // Get information on what groups and members are sorted by
-$query_settings = $database->query("SELECT * FROM ".TABLE_PREFIX."mod_members_settings WHERE section_id = '$section_id'");
+$query_settings = $database->query("SELECT * FROM `".TABLE_PREFIX."mod_members_settings` WHERE `section_id` = '$section_id'");
 if($query_settings->numRows() <> 1) { die('No settings'); }
 
 $settings_fetch = $query_settings->fetchRow();
@@ -63,14 +63,14 @@ $sort_mem_desc = $settings_fetch['sort_mem_desc'];
 
 // Sorting members by m_score - m_sortt - m_name or position
 if ($sort_mem_desc == 1) {$sort_ad = ' DESC';} else {$sort_ad = ' ASC';}
-$sort_by = "position".$sort_ad;
+$sort_by = "`position`".$sort_ad;
 // Sorting members by m_score - m_sortt - m_name or position
 if ($sort_mem_name == 1) {$sort_by = "m_name".$sort_ad;}
 if ($sort_mem_name == 2) {$sort_by = "m_sortt".$sort_ad.", m_name".$sort_ad;}
 if ($sort_mem_name == 3) {$sort_by = "m_score".$sort_ad.", m_sortt".$sort_ad.", m_name".$sort_ad;}
 
 $allowdragdropsort = 0;
-if ($sort_by == "position ASC") {$allowdragdropsort = 1;}
+if ($sort_by == "`position` ASC") {$allowdragdropsort = 1;}
 
 
 $picurl = WB_URL.'/modules/'.$mod_dir.'/img/';
@@ -106,7 +106,7 @@ $countquery_ghosts = $query_ghosts->numRows();
 
 
 // Loop through existing groups
-$query_groups = $database->query("SELECT * FROM `".TABLE_PREFIX."mod_members_groups` WHERE section_id = '$section_id' ORDER BY ".$sort_grp_by." ASC");
+$query_groups = $database->query("SELECT * FROM `".TABLE_PREFIX."mod_members_groups` WHERE `section_id` = '$section_id' ORDER BY ".$sort_grp_by." ASC");
 $countquery_groups = $query_groups->numRows();
 if($countquery_groups > 0) {
 $countgroups = 0;

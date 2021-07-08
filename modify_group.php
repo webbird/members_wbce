@@ -68,7 +68,7 @@ if (!defined('WYSIWYG_EDITOR') OR WYSIWYG_EDITOR=="none" OR !file_exists(WB_PATH
 
 
 // Get header and footer
-$query_content = $database->query("SELECT * FROM ".TABLE_PREFIX."mod_members_groups WHERE group_id = '$group_id'");
+$query_content = $database->query("SELECT * FROM `".TABLE_PREFIX."mod_members_groups` WHERE `group_id` = '$group_id'");
 $fetch_content = $query_content->fetchRow();
 $g_name = stripslashes($fetch_content['group_name']);
 $g_desc = stripslashes($fetch_content['group_desc']);

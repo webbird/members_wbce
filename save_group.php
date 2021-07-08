@@ -60,10 +60,10 @@ $gobacktolist =  (int)$admin->get_post_escaped('gobacktolist');
 $from = (int)$admin->get_post_escaped('from');
 
 //clear cache:
-	$database->query("UPDATE ".TABLE_PREFIX."mod_members_groups SET group_cache='',  group_search='' WHERE group_id = '".$group_id."'");
+	$database->query("UPDATE `".TABLE_PREFIX."mod_members_groups` SET `group_cache`='',  `group_search`='' WHERE `group_id` = '".$group_id."'");
 
 // Update row
-$database->query("UPDATE ".TABLE_PREFIX."mod_members_groups SET group_name = '$group_name', group_desc = '$group_desc', active = '$active' WHERE group_id = '$group_id'");
+$database->query("UPDATE `".TABLE_PREFIX."mod_members_groups` SET `group_name` = '$group_name', `group_desc` = '$group_desc', `active` = '$active' WHERE `group_id` = '$group_id'");
 
 // Check if there is a db error, otherwise say successful
 $back_url =  ADMIN_URL.'/pages/modify.php?page_id='.$page_id;

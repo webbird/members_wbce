@@ -24,11 +24,11 @@
 // Must include code to stop this file being access directly
 if(defined('WB_PATH') == false) { exit("Cannot access this file directly"); }
 
-$database->query("DELETE FROM ".TABLE_PREFIX."search WHERE name = 'module' AND value = 'members'");
-$database->query("DELETE FROM ".TABLE_PREFIX."search WHERE extra = 'members'");
-$database->query("DROP TABLE ".TABLE_PREFIX."mod_members");
-$database->query("DROP TABLE ".TABLE_PREFIX."mod_members_groups");
-$database->query("DROP TABLE ".TABLE_PREFIX."mod_members_settings");
+$database->query("DELETE FROM `".TABLE_PREFIX."search` WHERE `name` = 'module' AND `value` = 'members'");
+$database->query("DELETE FROM `".TABLE_PREFIX."search` WHERE `extra` = 'members'");
+$database->query("DROP TABLE `".TABLE_PREFIX."mod_members`");
+$database->query("DROP TABLE `".TABLE_PREFIX."mod_members_groups`");
+$database->query("DROP TABLE `".TABLE_PREFIX."mod_members_settings`");
 
 //Remove the members folder in the media dir
 //require_once(WB_PATH.'/framework/functions.php');

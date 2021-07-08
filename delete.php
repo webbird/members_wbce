@@ -20,10 +20,10 @@
  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 */
-$query_settings = $database->query("SELECT * FROM ".TABLE_PREFIX."mod_members_settings WHERE section_id = '$section_id'");
+$query_settings = $database->query("SELECT * FROM `".TABLE_PREFIX."mod_members_settings` WHERE `section_id` = '$section_id'");
 if($query_settings->numRows() == 1) {
 	$settings_fetch = $query_settings->fetchRow();
-		if ($settings_fetch['delete_grp_members'] == 1) {
+	if ($settings_fetch['delete_grp_members'] == 1) {
 		//find all members and all aliases of members:
 
 		//---------------------
@@ -33,8 +33,8 @@ if($query_settings->numRows() == 1) {
 
  }
 // Delete section from database
-$database->query("DELETE FROM ".TABLE_PREFIX."mod_members_groups WHERE section_id = '$section_id'");
-$database->query("DELETE FROM ".TABLE_PREFIX."mod_members_settings WHERE section_id = '$section_id'");
+$database->query("DELETE FROM `".TABLE_PREFIX."mod_members_groups` WHERE `section_id` = '$section_id'");
+$database->query("DELETE FROM `".TABLE_PREFIX."mod_members_settings` WHERE `section_id` = '$section_id'");
 
 include('kram/tidy_up.inc.php');
 

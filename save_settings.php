@@ -75,32 +75,32 @@ $gobacktolist =  (int) (int)$_POST['gobacktolist'];
 if (isset($forall)) {$forall = (int)$_POST['forall'];} else {$forall = 0;}
 
 //Clear Cache:
-$database->query("UPDATE ".TABLE_PREFIX."mod_members_groups SET group_cache= ''");
-$database->query("UPDATE ".TABLE_PREFIX."mod_members_groups SET group_search= ''");
+$database->query("UPDATE `".TABLE_PREFIX."mod_members_groups` SET `group_cache`= ''");
+$database->query("UPDATE `".TABLE_PREFIX."mod_members_groups` SET `group_search`= ''");
 
 // Update settings
-$thequery = ("UPDATE ".TABLE_PREFIX."mod_members_settings SET "
-					." t_memberpage_id = '$t_memberpage_id', "
-					." t_link = '$t_link', "
-					." t_short1 = '$t_short1', "
-					." t_short2 = '$t_short2', "
-					." t_long1 = '$t_long1', "
-					." t_long2 = '$t_long2', "
-					." various_values = '$various_values', "															
-					." header = '$header', "
-					." footer = '$footer', "
-					." grp_head = '$grp_head', "
-					." grp_foot = '$grp_foot', "
-					." member_loop = '$member_loop', "					
-					." hide_email = '$hide_email', "
-					." pic_loc = '$pic_loc', "
-					." extensions = '$extensions', "
-					." sort_grp_name = '$sort_grp_name', "
-					." sort_mem_name = '$sort_mem_name', "
-					." sort_mem_desc = '$sort_mem_desc', "
-					." delete_grp_members = '$delete_grp_members'");
+$thequery = ("UPDATE `".TABLE_PREFIX."mod_members_settings` SET "
+					." `t_memberpage_id` = '$t_memberpage_id', "
+					." `t_link` = '$t_link', "
+					." `t_short1` = '$t_short1', "
+					." `t_short2` = '$t_short2', "
+					." `t_long1` = '$t_long1', "
+					." `t_long2` = '$t_long2', "
+					." `various_values` = '$various_values', "
+					." `header` = '$header', "
+					." `footer` = '$footer', "
+					." `grp_head` = '$grp_head', "
+					." `grp_foot` = '$grp_foot', "
+					." `member_loop` = '$member_loop', "
+					." `hide_email` = '$hide_email', "
+					." `pic_loc` = '$pic_loc', "
+					." `extensions` = '$extensions', "
+					." `sort_grp_name` = '$sort_grp_name', "
+					." `sort_mem_name` = '$sort_mem_name', "
+					." `sort_mem_desc` = '$sort_mem_desc', "
+					." `delete_grp_members` = '$delete_grp_members'");
 					
-					if ($forall <> 1) {$thequery .= " WHERE section_id = '$section_id'";}
+					if ($forall <> 1) {$thequery .= " WHERE `section_id` = '$section_id'";}
 					
 //die($thequery);					
 $database->query(str_replace('?php', '', $thequery));

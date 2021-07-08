@@ -39,7 +39,7 @@ $order = new order(TABLE_PREFIX.'mod_members_groups', 'position', 'group_id', 's
 $position = $order->get_new($section_id);
 
 // Insert new row into database
-$database->query("INSERT INTO ".TABLE_PREFIX."mod_members_groups (section_id,page_id,position,active) VALUES ('$section_id','$page_id','$position','1')");
+$database->query("INSERT INTO `".TABLE_PREFIX."mod_members_groups` (`section_id`,`page_id`,`position`,`active`) VALUES ('$section_id','$page_id','$position','1')");
 
 // Get the id
 $group_id = $database->get_one("SELECT LAST_INSERT_ID()");

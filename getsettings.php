@@ -23,7 +23,7 @@ if ($admin->is_authenticated()) {echo "//Starting Javascript\n";} else {die("Sor
 */
 
 // Get header and footer
-	$query_content = $database->query("SELECT * FROM ".TABLE_PREFIX."mod_members_settings WHERE section_id = '$section_id'");
+	$query_content = $database->query("SELECT * FROM `".TABLE_PREFIX."mod_members_settings` WHERE `section_id` = '$section_id'");
 	$fetch_content = $query_content->fetchRow();
 	if ($style==1) {echo "\nthepresetsdescription = 'Short Description here';\n\n";}
 

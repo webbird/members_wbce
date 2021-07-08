@@ -34,29 +34,29 @@ if(!isset($_GET['group_id']) OR !is_numeric($_GET['group_id'])) {
 $update_when_modified = true; // Tells script to update when this page was last updated
 require(WB_PATH.'/modules/admin.php');
 
-$query_settings = $database->query("SELECT * FROM ".TABLE_PREFIX."mod_members_settings WHERE section_id = '$section_id'");
+$query_settings = $database->query("SELECT * FROM `".TABLE_PREFIX."mod_members_settings` WHERE `section_id` = '$section_id'");
 if($query_settings->numRows() <> 1) { die('No settings'); }
 
 $settings_fetch = $query_settings->fetchRow();
 if ($settings_fetch['delete_grp_members'] == 1) {
 	// Delete all Aliases:
-	$database->query("DELETE FROM ".TABLE_PREFIX."mod_members WHERE group_id = '$group_id' AND m_isalias > 0");
+	$database->query("DELETE FROM `".TABLE_PREFIX."mod_members` WHERE `group_id` = '$group_id' AND `m_isalias` > 0");
 	
 	//find all aliases of members:
-	$query_members = $database->query("SELECT member_id FROM `".TABLE_PREFIX."mod_members` WHERE group_id = '$group_id'");
+	$query_members = $database->query("SELECT `member_id` FROM `".TABLE_PREFIX."mod_members` WHERE `group_id` = '$group_id'");
 	if ($query_members->numRows() > 0) {
 		while($member_fetch  = $query_members->fetchRow()) {
 			$mnr = $member_fetch['member_id'];
-			$query_alias = $database->query("SELECT * FROM `".TABLE_PREFIX."mod_members` WHERE m_isalias = '".$mnr."'");
+			$query_alias = $database->query("SELECT * FROM `".TABLE_PREFIX."mod_members` WHERE `m_isalias` = '".$mnr."'");
 			if($query_alias->numRows() > 0) {
 				while($alias = $query_alias->fetchRow()) {
-					$database->query("DELETE FROM ".TABLE_PREFIX."mod_members WHERE member_id = '".$alias['member_id']."'");
+					$database->query("DELETE FROM `".TABLE_PREFIX."mod_members` WHERE `member_id` = '".$alias['member_id']."'");
 					echo "alias deleted: ".$alias['member_id']."<br/>";
 				}			
 			}
 		}	
 		//Finaly: delete member
-		$database->query("DELETE FROM ".TABLE_PREFIX."mod_members WHERE member_id = '".$mnr."'");
+		$database->query("DELETE FROM `".TABLE_PREFIX."mod_members` WHERE `member_id` = '".$mnr."'");
 		echo "member deleted: ". $mnr."<br/>";
 	}	
 }
@@ -64,7 +64,7 @@ if ($settings_fetch['delete_grp_members'] == 1) {
 
 
 // Delete group
-$database->query("DELETE FROM ".TABLE_PREFIX."mod_members_groups WHERE group_id = '$group_id'");
+$database->query("DELETE FROM `".TABLE_PREFIX."mod_members_groups` WHERE `group_id` = '$group_id'");
 include('tidy_up.inc.php');
 
 $back_url =  ADMIN_URL.'/pages/modify.php?page_id='.$page_id;

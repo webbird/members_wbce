@@ -10,7 +10,7 @@ if (!is_numeric($memp) OR $memp < 1) { die('<span style="color:red">This is no p
 
 
 
-$query_pages = $database->query("SELECT link FROM ".TABLE_PREFIX."pages WHERE page_id = '$memp'");
+$query_pages = $database->query("SELECT `link` FROM `".TABLE_PREFIX."pages` WHERE `page_id` = '$memp'");
 if($query_pages->numRows() <> 1) { die('<span style="color:red">page_id <b>'.$memp.'</b> not found</span>'); }
 $fetch_pages = $query_pages->fetchRow();
 

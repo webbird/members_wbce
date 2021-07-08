@@ -45,7 +45,7 @@ if(LANGUAGE_LOADED) {
 }
 
 // STEP 2:	Get actual settings from database
-$query_settings = $database->query("SELECT * FROM ".TABLE_PREFIX."mod_members_settings WHERE section_id = '$section_id'");
+$query_settings = $database->query("SELECT * FROM `".TABLE_PREFIX."mod_members_settings` WHERE `section_id` = '$section_id'");
 $settings = $query_settings->fetchRow();
 
 // STEP 3:	Display the help page.

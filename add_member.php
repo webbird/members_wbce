@@ -24,7 +24,7 @@
 require('../../config.php');
 
 // Must include code to stop this file being access directly
-if(defined('WB_PATH') == false) { exit("Cannot access this file directly"); }
+if(!defined('WB_PATH')) { exit("Cannot access this file directly"); }
 
 $mod_dir = basename(dirname(__FILE__));
 require('kram/module_settings.default.php');
@@ -51,7 +51,7 @@ $position = $order->get_new($group_id);
 
 
 // Insert new row into database
-$database->query("INSERT INTO ".TABLE_PREFIX."mod_members (group_id,position,active,m_isalias) VALUES ('$group_id','$position','1','$isalias')");
+$database->query("INSERT INTO `".TABLE_PREFIX."mod_members` (`group_id`,`position`,`active`,`m_isalias`) VALUES ('$group_id','$position','1','$isalias')");
 
 // Get the id
 $member_id = $database->get_one("SELECT LAST_INSERT_ID()");

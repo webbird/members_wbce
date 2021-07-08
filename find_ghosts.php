@@ -23,7 +23,7 @@
 
 require('../../config.php');
 // Must include code to stop this file being access directly
-if(defined('WB_PATH') == false) { exit("Cannot access this file directly"); }
+if(!defined('WB_PATH')) { exit("Cannot access this file directly"); }
 
 $mod_dir = basename(dirname(__FILE__));
 
@@ -76,7 +76,7 @@ $countmembers = 0;
 $countalias = 0;
 $countaliasofmembers = 0;
 			
-$query_members = $database->query("SELECT * FROM `".TABLE_PREFIX."mod_members` WHERE group_id = '1' ORDER BY m_sortt,m_name ASC");
+$query_members = $database->query("SELECT * FROM `".TABLE_PREFIX."mod_members` WHERE `group_id` = '1' ORDER BY `m_sortt`,`m_name` ASC");
 if($query_members->numRows() > 0) {	
 	while($members = $query_members->fetchRow()) {
 	$isalias = 0 + (int)$members['m_isalias'];
@@ -127,7 +127,7 @@ if ($countmembers > 0) {
 	$m_selection = '<select style="width:150px;" name="to_do"><option value="delete">'. $TEXT['DELETE']."</option>\n";
 	$m_selection .= '<option value="#">--'. $METEXT['MOVETO']."--</option>\n";
 	
-	$query = $database->query("SELECT * FROM ".TABLE_PREFIX."mod_members_groups ORDER BY page_id,position ASC");				
+	$query = $database->query("SELECT * FROM `".TABLE_PREFIX."mod_members_groups` ORDER BY `page_id`,`position` ASC");
 	if($query->numRows() > 0) {			
 		// Loop through groups
 		while($group = $query->fetchRow()) {

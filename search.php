@@ -35,9 +35,9 @@ function members_search($func_vars) {
 	// scripting will be removed later on automatically
 	$table = TABLE_PREFIX."mod_members_groups";
 	$query = $func_database->query("
-		SELECT group_cache
-		FROM $table
-		WHERE section_id='$func_section_id'
+		SELECT `group_cache`
+		FROM `$table`
+		WHERE `section_id`='$func_section_id'
 	");
 
 	if($query->numRows() > 0) {

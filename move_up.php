@@ -63,7 +63,7 @@ if ($id_field == 'group_id') {
 	$order = new order($table, 'position', $id_field, 'group_id');
 	$back_url .= $paramdelimiter.'hlmember='.$id;
 	//clear cache:
-	$database->query("UPDATE ".TABLE_PREFIX."mod_members_groups SET group_cache='',  group_search='' WHERE group_id = '".$_GET['group_id']."'");
+	$database->query("UPDATE `".TABLE_PREFIX."mod_members_groups` SET `group_cache`='',  `group_search`='' WHERE `group_id` = '".$_GET['group_id']."'");
 }
 
 if($order->move_up($id)) {

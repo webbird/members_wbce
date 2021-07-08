@@ -35,11 +35,11 @@ $update_when_modified = true; // Tells script to update when this page was last 
 require(WB_PATH.'/modules/admin.php');
 
 //clear cache
-$database->query("UPDATE ".TABLE_PREFIX."mod_members_groups SET group_cache= ''");
-$database->query("UPDATE ".TABLE_PREFIX."mod_members_groups SET group_search= ''");
+$database->query("UPDATE `".TABLE_PREFIX."mod_members_groups` SET `group_cache`= ''");
+$database->query("UPDATE `".TABLE_PREFIX."mod_members_groups` SET `group_search`= ''");
 
 // Delete row
-$database->query("UPDATE ".TABLE_PREFIX."mod_members SET group_id = '1' WHERE member_id = '$member_id'");
+$database->query("UPDATE `".TABLE_PREFIX."mod_members` SET `group_id` = '1' WHERE `member_id` = '$member_id'");
 
 $back_url =  ADMIN_URL.'/pages/modify.php?page_id='.$page_id;
 if (isset($_GET['from']) AND $_GET['from'] == 2) { $back_url = WB_URL.'/modules/'.$mod_dir .'/modify_sort.php?page_id='.$page_id.'&section_id='.$section_id; }

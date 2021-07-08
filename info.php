@@ -24,7 +24,7 @@
 $module_directory = 'members';
 $module_name = 'Members';
 $module_function = 'page';
-$module_version = '0.9';
+$module_version = '0.10';
 $module_platform = '2.7.x';
 $module_author = 'Chio:www.websitbaker.at, RuudE, aldus';
 $module_license = 'GNU General Public License';

@@ -83,7 +83,7 @@ if(isset($_GET['sort']) AND is_numeric($_GET['sort'])) {
 $alloutput = '';
 
 // Loop through groups
-$query_groups = $database->query("SELECT * FROM ".TABLE_PREFIX."mod_members_groups WHERE section_id = '".$section_id."' AND active = '1' ORDER BY ".$sort_grp_by." ASC");
+$query_groups = $database->query("SELECT * FROM `".TABLE_PREFIX."mod_members_groups` WHERE `section_id` = '".$section_id."' AND `active` = '1' ORDER BY ".$sort_grp_by." ASC");
 
 if($query_groups->numRows() > 0) {
 	$header =  $settings_fetch['header'];
@@ -104,7 +104,7 @@ if($query_groups->numRows() > 0) {
 		//Cache
 		$output = '';
 		if ($use_caching == 1) {
-			$query_content = $database->query("SELECT group_cache FROM ".TABLE_PREFIX."mod_members_groups WHERE group_id = '$group_id'");
+			$query_content = $database->query("SELECT `group_cache` FROM `".TABLE_PREFIX."mod_members_groups` WHERE `group_id` = '$group_id'");
 			if($query_content->numRows() > 0) {
 				$fetch_cache = $query_content->fetchRow();	
 				$output = $fetch_cache['group_cache'];
@@ -161,7 +161,7 @@ if($query_groups->numRows() > 0) {
 		if ($sort_mem_name == 3) {$sort_by = "m_score".$sort_ad.", m_sortt".$sort_ad.", m_name".$sort_ad;}
 
 		// Query tem members in this group
-		$query_members = $database->query("SELECT * FROM ".TABLE_PREFIX."mod_members WHERE group_id = '".$group_id."' AND active = '1' ORDER BY ".$sort_by );
+		$query_members = $database->query("SELECT * FROM `".TABLE_PREFIX."mod_members` WHERE `group_id` = '".$group_id."' AND `active` = '1' ORDER BY ".$sort_by );
 		if($query_members->numRows() > 0) {			
 			$rowcount = 0;
 			// Loop through all members in this group		
@@ -182,7 +182,7 @@ if($query_groups->numRows() > 0) {
 				if ($isalias == 0) {
 					$the_member = $membersmember;
 				} else {
-					$query_alias = $database->query("SELECT * FROM ".TABLE_PREFIX."mod_members WHERE member_id = '".$isalias."'");
+					$query_alias = $database->query("SELECT * FROM `".TABLE_PREFIX."mod_members` WHERE `member_id` = '".$isalias."'");
 					$the_member = $query_alias->fetchRow();					
 				}
 				
@@ -253,7 +253,7 @@ if($query_groups->numRows() > 0) {
 				$f_memberpage = '';	
 				$m_memberpage_id = (int)$the_member['m_memberpage_id'];
 				if ($m_memberpage_id > 0) {
-					$query_pages= $database->query("SELECT link, page_title FROM ".TABLE_PREFIX."pages WHERE page_id = '$m_memberpage_id'");
+					$query_pages= $database->query("SELECT `link`, `page_title` FROM `".TABLE_PREFIX."pages` WHERE `page_id` = '$m_memberpage_id'");
 					if($query_pages->numRows() <> 1) { 
 						$m_memberpage = ''; 
 					} else {
@@ -317,14 +317,14 @@ if($query_groups->numRows() > 0) {
 		//So this will be the best way.
 		if ($use_caching == 1 OR $wb->is_authenticated() ) { 
 			if ($differentsorting == 0) { //dont change cache, if sorting is different
-				$database->query("UPDATE ".TABLE_PREFIX."mod_members_groups SET group_cache= '".$output."' WHERE group_id = '$group_id' ");
+				$database->query("UPDATE `".TABLE_PREFIX."mod_members_groups` SET `group_cache`= '".$output."' WHERE `group_id` = '$group_id' ");
 				
 				//Prepare for search:
 				$text = str_replace($vars, $values, $output);
 				$text = strip_tags($text);
 				$text = preg_replace('/\s+/', ' ', $text);			
 				$text = addslashes($text);
-				$database->query("UPDATE ".TABLE_PREFIX."mod_members_groups SET group_search= '".$text."' WHERE group_id = '$group_id' ");
+				$database->query("UPDATE `".TABLE_PREFIX."mod_members_groups` SET `group_search`= '".$text."' WHERE `group_id` = '$group_id' ");
 				echo "\n<!-- Cache rebuilt -->\n";
 			}
 		}

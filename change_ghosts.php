@@ -22,7 +22,7 @@
 */
 require('../../config.php');
 // Must include code to stop this file being access directly
-if(defined('WB_PATH') == false) { exit("Cannot access this file directly"); }
+if(!defined('WB_PATH')) { exit("Cannot access this file directly"); }
 
 $mod_dir = basename(dirname(__FILE__));
 
@@ -61,15 +61,15 @@ foreach ($_POST as $value) {
 	//if delete: 
 	if ($moveto == 0) {
 	//delete also all aliases:
-		$query_alias = $database->query("SELECT * FROM `".TABLE_PREFIX."mod_members` WHERE m_isalias = '".$mnr."'");
+		$query_alias = $database->query("SELECT * FROM `".TABLE_PREFIX."mod_members` WHERE `m_isalias` = '".$mnr."'");
 		if($query_alias->numRows() > 0) {
 			while($alias = $query_alias->fetchRow()) {
-				$database->query("DELETE FROM ".TABLE_PREFIX."mod_members WHERE member_id = '".$alias['member_id']."'");
+				$database->query("DELETE FROM `".TABLE_PREFIX."mod_members` WHERE `member_id` = '".$alias['member_id']."'");
 				echo "alias deleted: ".$alias['member_id'].': '.$alias['m_name']."<br/>";				
 			}			
 		}
 		//Finaly: delete member
-		$database->query("DELETE FROM ".TABLE_PREFIX."mod_members WHERE member_id = '".$mnr."'");
+		$database->query("DELETE FROM `".TABLE_PREFIX."mod_members` WHERE `member_id` = '".$mnr."'");
 		echo "member deleted: ". $mnr."<br/>";
 		
 	} else {
@@ -77,7 +77,7 @@ foreach ($_POST as $value) {
 		//Move to group $moveto :
 		
 		//change page_id to get back to new page:
-		$query_groups = $database->query("SELECT page_id, section_id FROM `".TABLE_PREFIX."mod_members_groups` WHERE group_id = '".$moveto."'");
+		$query_groups = $database->query("SELECT `page_id`, `section_id` FROM `".TABLE_PREFIX."mod_members_groups` WHERE `group_id` = '".$moveto."'");
 		if($query_groups->numRows() > 0) {
 			$group_fetch = $query_groups->fetchRow();
 			$page_id = $group_fetch['page_id'];
@@ -87,11 +87,11 @@ foreach ($_POST as $value) {
 		//change position:
 		$order = new order(TABLE_PREFIX.'mod_members', 'position', 'member_id', 'group_id');
 		$position = $order->get_new($moveto);
-		$database->query("UPDATE ".TABLE_PREFIX."mod_members SET position='".$position."'WHERE member_id='".$mnr."'");
+		$database->query("UPDATE `".TABLE_PREFIX."mod_members` SET `position`='".$position."' WHERE `member_id`='".$mnr."'");
 		echo "new position: ". $mnr."<br/>";
 		
 		//move to group:
-		$database->query("UPDATE ".TABLE_PREFIX."mod_members SET group_id='".$moveto."'WHERE member_id='".$mnr."'");
+		$database->query("UPDATE `".TABLE_PREFIX."mod_members` SET `group_id`='".$moveto."' WHERE `member_id`='".$mnr."'");
 		echo "member moved: ". $mnr."<br/>";
 							
 		

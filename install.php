@@ -95,8 +95,8 @@ if(defined('WB_URL')) {
 
 	// Insert blank rows (there needs to be at least on row for the search to work)
 	
-	$database->query("INSERT INTO ".TABLE_PREFIX."mod_members_groups (section_id,page_id,group_id) VALUES ('0', '0', '0')");
-	$database->query("INSERT INTO ".TABLE_PREFIX."mod_members_settings (section_id,page_id) VALUES ('0', '0')");
+	$database->query("INSERT INTO `".TABLE_PREFIX."mod_members_groups` (`section_id`,`page_id`,`group_id`) VALUES ('0', '0', '0')");
+	$database->query("INSERT INTO `".TABLE_PREFIX."mod_members_settings` (`section_id`,`page_id`) VALUES ('0', '0')");
 	
 	
 	//______________________________________________
